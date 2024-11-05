@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Html with Semantic Structure and Tables</title>
+    </head>
+    <body>
+        <hr>
+        <form action="" method="post">
+            <main>
+                <section>
+                    <fieldset>
+                        <legend>Order Preferences</legend>
+                        <label for="drinks">Favorite Drink:</label>
+                        <select name="drinks" id="drinks">
+                            <option value="Latte">Latte</option>
+                            <option value="Frappe">Frappe</option>
+                            <option value="Softdrinks">Softdrinks</option>
+                        </select><br>
+                        <br>
+                        <label for="dietary">Select your dietary preferences:</label><br>
+                        <input type="checkbox" name="vegan" id="vegan" value="vegan">
+                        <label for="vegan">Vegan</label><br>
+                        <input type="checkbox" name="vegetarian" id="vegetarian" value="vegetarian">
+                        <label for="vegetarian">Vegan</label><br>
+                        <input type="checkbox" name="gluten" id="gluten" value="Gluten-Free">
+                        <label for="gluten">Gluten-Free</label><br>
+                        <br>
+                    </fieldset>
+                </section>
+                <section>
+                    <fieldset>
+                        <legend>Feedback</legend>
+                        <label for="rate">Rate Your Last Visit (1-5): </label>
+                        <input type="range" name="rate" id="rate" min="1" max="5"><br><br>
+                        <label for="comment">Addtional Comments:</label>
+                        <br>
+                        <textarea name="comment" id="comment" cols="30" rows="5" placeholder="Tell us about your experience..."></textarea>
+                        <br>
+                        <label for="receive">Would you like to receive our newsletter?</label>
+                        <input type="checkbox" name="receive" id="receive" value="1"><br>
+                    </fieldset>
+                </section>
+            </main>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

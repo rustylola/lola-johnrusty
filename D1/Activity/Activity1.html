@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Html with Semantic Structure and Tables</title>
+    </head>
+    <body>
+        <h1>Welcome to Cafe Delights</h1>
+        <p>Your Cozy corner for the best coffee and treats in town.</p>
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Please fill out the form bellow:</p>
+        <main>
+            <form>
+                <fieldset id="personal-information">
+                    <legend>Personal Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="phonenumber">Phone Number:</label>
+                    <input type="text" id="phonenumber" name="phonenumber" placeholder="123-456-7890"><br><br>
+                    <label for="birthday">Birthday:</label>
+                    <input type="date" id="birthday" name="birthday"><br>
+                    <br>
+                </fieldset>
+                <fieldset id="visit-information">
+                    <legend>Visit Information</legend>
+                    <label for="visit-date">Preferred Visit Date:</label>
+                    <input type="date" id="visit-date" name="visit-date"><br><br>
+                    <label for="visit-time">Preferred Time:</label>
+                    <input type="time" id="visit-time" name="visit-time"><br><br>
+                    <input type="radio" name="returning-cust" id="visit-yes" value="Yes">
+                    <label for="visit-yes">Yes</label><br>
+                    <input type="radio" name="returning-cust" id="visit-no" value="No">
+                    <label for="visit-no">No</label><br>
+                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend>Order Preferences</legend>
+                    <label for="drinks">Favorite Drink:</label>
+                    <select name="drinks" id="drinks">
+                        <option value="Latte">Latte</option>
+                        <option value="Frappe">Frappe</option>
+                        <option value="Softdrinks">Softdrinks</option>
+                    </select><br>
+                    <br>
+                    <label for="dietary">Select your dietary preferences:</label><br>
+                    <input type="checkbox" name="vegan" id="vegan" value="vegan">
+                    <label for="vegan">Vegan</label><br>
+                    <input type="checkbox" name="vegetarian" id="vegetarian" value="vegetarian">
+                    <label for="vegetarian">Vegan</label><br>
+                    <input type="checkbox" name="gluten" id="gluten" value="Gluten-Free">
+                    <label for="gluten">Gluten-Free</label><br>
+                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend>Feedback</legend>
+                    <label for="rate">Rate Your Last Visit (1-5): </label>
+                    <input type="range" name="rate" id="rate" min="1" max="5"><br><br>
+                    <label for="comment">Addtional Comments:</label>
+                    <br>
+                    <textarea name="comment" id="comment" cols="30" rows="5" placeholder="Tell us about your experience..."></textarea>
+                    <br>
+                    <br>
+                    <label for="receive">Would you like to receive our newsletter?</label>
+                    <input type="checkbox" name="receive" id="receive" value="1"><br>
+                    <br>
+                </fieldset>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>
