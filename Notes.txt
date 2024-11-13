@@ -1,0 +1,67 @@
+Array Method:
+- foreach 
+    typically loop the array 
+
+- map
+    return new array
+    ------ Example ------
+    const numbers = [1, 2, 3, 4, 5]; 
+
+    const bigNumbers = numbers.map(number => {
+        return number * 10;
+    });
+    console.log(numbers); // Output: [1, 2, 3, 4, 5]
+    console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
+    ------ End ------
+
+- filter
+    return new array that always true
+    ------ Example ------
+    const words = ['pillow', 'brick', 'pen', 'door']; 
+
+    const shortWords = words.filter(word => {
+        return word.length < 6;
+    });
+    console.log(words); // Output: ['pillow', 'brick', 'pen', 'door']; 
+    console.log(shortWords); // Output: ['brick', 'pen', 'door']
+    ------ End ------
+
+- findIndex
+    return the index of the first element that evaluates to true in the callback
+    ------ Example ------
+    const jumbledNums = [123, 25, 78, 5, 9]; 
+
+    const lessThanTen = jumbledNums.findIndex(num => {
+        return num < 10;
+    });
+    console.log(lessThanTen); // Output: 3 
+    console.log(jumbledNums[3]); // Output: 5
+    ------ End ------
+
+- reduce
+    returns a single value after iterating through the elements of an array, thereby reducing the array. 
+    ------ Example ------
+    const numbers = [1, 2, 4, 10];
+
+    const summedNums = numbers.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue
+    })
+
+    console.log(summedNums) // Output: 17
+
+    Iteration	accumulator	currentValue	return value
+    First	        1	        2	            3
+    Second	        3	        4	            7
+    Third	        7	        10	            17
+    ------ End ------
+
+- some
+    return boolean checking each value that meet the condition retun true, otherwise, at least 1 false, return false 
+    ------ Example ------
+    const isBelowThreshold = (currentValue) => currentValue < 40;
+
+    const array1 = [1, 30, 39, 29, 10, 13];
+
+    console.log(array1.every(isBelowThreshold));
+    // Expected output: true
+    ------ End ------
