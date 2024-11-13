@@ -54,9 +54,18 @@ Array Method:
     Second	        3	        4	            7
     Third	        7	        10	            17
     ------ End ------
-
 - some
-    return boolean checking each value that meet the condition retun true, otherwise, at least 1 false, return false 
+    return boolean checking each value that meet the condition return true if at least 1 true, otherwise, return false if all false
+    const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+    // Something is missing in the method call below
+
+    console.log(words.some((word) => {
+        return word.length < 6;
+    }));
+
+- every
+    return boolean checking each value that meet the condition return true if all true, otherwise, at least 1 false, return false 
     ------ Example ------
     const isBelowThreshold = (currentValue) => currentValue < 40;
 
