@@ -27,7 +27,7 @@ function border(){
     const element = document.querySelector('#task-list').children;
     let totalTask = element.length - 1;
     while(totalTask >= 0){
-        console.log(totalTask);
+        // console.log(totalTask);
         if(totalTask != 0) element[totalTask].classList.add("bt-2-grey");
         else element[totalTask].classList.remove("bt-2-grey");
         totalTask--;

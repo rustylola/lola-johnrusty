@@ -15,14 +15,8 @@
     <br>
     <h1>Shopping Cart</h1>
     <h2>Your Cart</h2>
-    <ul class="mycart">
-        <li>
-            Product 
-            <span class="prd-num">1</span>&nbsp;
-            <span class="prd-price">10.00</span>
-            <button class="remove">Remove</button>&nbsp;
-            <span class="prd-count">1</span>
-        </li>
+    <ul id="mycart">
+        
     </ul>
     <p>Total Price: &dollar;<span id="prd-total">0.00</span></p>
     <button>Checkout</button>
@@ -51,16 +45,48 @@
   <script > //src="script3.js"
     
     let cart = new Object();
+
     function items(){
-        
+        let insertNode = document.createElement('li');
+        let findMyCart = document.getElementById('mycart');
+        findMyCart.innerHTML = '';
+        Object.keys(cart).forEach((key) => {
+            console.log(key);
+            insertNode.innerHTML = `
+                <li>
+                    Product 
+                    <span class="prd-num">${cart[key].itemNumber}</span>&nbsp;
+                    <span class="prd-price">${cart[key].itemPrice}</span>
+                    <button class="remove">Remove</button>&nbsp;
+                    <span class="prd-count" onclick="removeCart(this)">${cart[key].itemCount}</span>
+                </li>
+            `;
+            findMyCart.appendChild(insertNode);
+        });
     }
-    console.log(items());
+
     function addCart(toggle){
         let itemNum = toggle.getAttribute('item-num');
         let itemPrice = toggle.getAttribute('item-price');
-
-        console.log(itemNum,itemPrice);
+        if(cart.hasOwnProperty(`itemNum${itemNum}`)){
+            let getTotalCount = cart[`itemNum${itemNum}`].itemCount + 1;
+            cart[`itemNum${itemNum}`]['itemCount'] = getTotalCount;
+        }else{
+            cart[`itemNum${itemNum}`] = {'itemNumber':itemNum,'itemPrice':itemPrice,'itemCount':1};
+        }
+        items();
     }
+
+    // function removeCart(toggle){
+    //     let itemNum = toggle.getAttribute('item-num');
+    //     let itemPrice = toggle.getAttribute('item-price');
+    //     if(cart.hasOwnProperty(`itemNum${itemNum}`) && cart[`itemNum${itemNum}`].itemCount != 0){
+    //         let getTotalCount = cart[`itemNum${itemNum}`].itemCount - 1;
+    //         cart[`itemNum${itemNum}`]['itemCount'] = getTotalCount;
+    //     }else{
+            
+    //     }
+    // }
 
   </script>
 </body>
