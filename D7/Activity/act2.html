@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity 1: Loan Calculator</title>
+</head>
+<style>
+    .container{
+        height: 100%;
+        width: 50%;
+        margin: 0 auto;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    .container h1{
+        text-align: center;
+    }
+    .form {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .form > input{
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ced4da;
+    }
+    #task-list > div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 5%;
+        padding: 2% 0;
+    }
+    #task-list > div span{
+        font-size: 25px;
+    }
+    button {
+        width: 15%;
+        border: 1px solid rgb(3, 223, 3);
+        padding: 1.5% 2%;
+        color: white;
+        background-color: #28a745;
+    }
+    .bt-2-grey{
+        border-top: 2px solid rgb(206, 206, 206); 
+    }
+</style>
+<body>
+    <div class="container">
+        <br>
+        <h1>Task Manager</h1>
+        <br>
+        <div class="task-input">
+            <form id="form" class="form">
+                <input type="text" id="task" placeholder="Enter your task" required>
+                <button type="submit" id="submit">Add Task</button>
+            </form>
+        </div>
+        <div id="task-list">
+            <div>
+                <span class="task-name">Test</span>
+                <button id="task-id" onclick="removeTask(this)">Delete</button>
+            </div>
+        </div>
+    </div>
+  <script >
+
+    let taskName;
+    let list;
+    let insertNode;
+    let button = document.getElementById('form');
+
+    button.addEventListener('submit', addTask);
+
+    function addTask(event){
+        event.preventDefault();
+        list = document.getElementById('task-list');
+        insertNode = document.createElement('div');
+        taskName = document.getElementById('task').value;
+        insertNode.innerHTML = `
+                <span class="task-name">${taskName}</span>
+                <button id="task-id" onclick="removeTask(this)">Delete</button>
+            `;
+        list.appendChild(insertNode);
+        border();
+    }
+
+    function removeTask(toggle){
+        toggle.parentNode.remove();
+        border();
+    }
+
+    function border(){
+        const element = document.querySelector('#task-list').children;
+        let totalTask = element.length - 1;
+        while(totalTask >= 0){
+            console.log(totalTask);
+            if(totalTask != 0) element[totalTask].classList.add("bt-2-grey");
+            else element[totalTask].classList.remove("bt-2-grey");
+            totalTask--;
+        }
+        
+    }
+  </script>
+</body>
+</html>
