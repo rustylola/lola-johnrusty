@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity 3: Shopping Cart</title>
+</head>
+<style>
+    .container{
+        height: 100%;
+        width: 50%;
+        margin: 0 auto;
+    }
+</style>
+<body>
+  <div class="container">
+    <br>
+    <h1>Shopping Cart</h1>
+    <h2>Your Cart</h2>
+    <ul class="mycart">
+        <li>
+            Product 
+            <span class="prd-num">1</span>&nbsp;
+            <span class="prd-price">10.00</span>
+            <button class="remove">Remove</button>&nbsp;
+            <span class="prd-count">1</span>
+        </li>
+    </ul>
+    <p>Total Price: &dollar;<span id="prd-total">0.00</span></p>
+    <button>Checkout</button>
+    <h2>Products</h2>
+    <ul id="itemlist">
+        <li>
+            Product 
+            <span class="itm-num">1</span>&nbsp;
+            <span class="itm-price">&dollar;10.00</span>
+            <button class="add" onclick="addCart(this)" item-num="1" item-price="10.00">Add to Cart</button>
+        </li>
+        <li>
+            Product 
+            <span class="itm-num">2</span>&nbsp;
+            <span class="itm-price">&dollar;15.00</span>
+            <button class="add" onclick="addCart(this)" item-num="2" item-price="15.00">Add to Cart</button>
+        </li>
+        <li>
+            Product 
+            <span class="itm-num">3</span>&nbsp;
+            <span class="itm-price">&dollar;20.00</span>
+            <button class="add" onclick="addCart(this)" item-num="3" item-price="20.00">Add to Cart</button>
+        </li>
+    </ul>
+  </div>
+  <script > //src="script3.js"
+    
+    let cart = new Object();
+    function items(){
+        
+    }
+    console.log(items());
+    function addCart(toggle){
+        let itemNum = toggle.getAttribute('item-num');
+        let itemPrice = toggle.getAttribute('item-price');
+
+        console.log(itemNum,itemPrice);
+    }
+
+  </script>
+</body>
+</html>
