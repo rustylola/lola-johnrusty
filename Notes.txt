@@ -74,3 +74,10 @@ Array Method:
     console.log(array1.every(isBelowThreshold));
     // Expected output: true
     ------ End ------
+
+    // for (i of findMyCart.children) {
+            // console.log(i.querySelector('.remove'));
+            // i.addEventListener('click', function() {
+            //     console.log(this);
+            // });
+        // }
