@@ -7,7 +7,7 @@ const displayUserData = async () => {
     try{
         if(response.status === 200){
             const data = await response.json();
-            console.log(data); 
+            // console.log(data); 
             let html = ``;
 
             data.forEach((user) =>{
