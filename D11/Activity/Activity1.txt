@@ -1,0 +1,57 @@
+// Step 1: Create a new MongoDB Atlas cluster and connect to it using MongoDB Compass .
+
+// Step 2: In MongoDB Compass, create a new database called "Bookstore" and a collection called "Books".
+use Bookstore
+db.Books.insertOne({
+	title:"Vinland Saga",
+	author:"Makoto Yukimura",
+	genre: "Seinen manga",
+    publicationYear: "2005"
+})
+
+// Step 3: Perform the following CRUD operations using MongoDB Compass:
+
+// a) Create Operation:
+// Insert at least three book documents with different fields such as title, author, genre, and publication year.
+db.Books.insertMany([
+    {
+        title:"One Piece",
+        author:"Eiichiro Oda",
+        genre: "Shonen manga",
+        publicationYear: "1997"
+    },
+    {
+        title:"Assassination Classroom",
+        author:"Yusei Matsui",
+        genre: "Shonen manga",
+        publicationYear: "2012"
+    },
+])
+db.Books.find()
+
+// b) Read Operation:
+// Retrieve all the book documents in the "Books" collection.
+db.Books.find()
+
+// Retrieve a specific book document based on its title or author.
+db.Books.find({ $or : [{title:"One Piece"},{author:"Makoto Yukimura"}]})
+
+// c) Update Operation:
+// Update the genre of a book document.
+db.Books.updateOne({title:"One Piece"},{$set:{genre:"Comedy"}})
+db.Books.find()
+
+// Update the publication year of a book document.
+db.Books.updateOne({title:"One Piece"},{$set:{publicationYear:"1990"}})
+db.Books.find()
+
+// d) Delete Operation:
+// Delete a book document based on its title or author.
+db.Books.deleteMany({$or:[{title:"One Piece"},{author:"Makoto Yukimura"}]})
+db.Books.find()
+
+// Step 4: After each operation, verify the changes by re-reading the data from the "Books" collection.
+db.Books.find()
+
+// Note: Remember to clean up the cluster and delete the "Bookstore" database if no longer needed.
+db.Books.drop();
