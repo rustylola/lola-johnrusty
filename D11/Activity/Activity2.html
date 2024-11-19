@@ -1531,10 +1531,12 @@ You are managing a database for a movie rental system. You will first create a d
 <p>1.1 <strong>Step 1</strong>: Create a new database called <code>MovieRental</code>.</p>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here to create the database
+    use MovieRental;
 </code></pre>
 <p>1.2 <strong>Step 2</strong>: Create a collection named <code>Movies</code>.</p>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here to create the collection
+    db.createCollection("Movies");
 </code></pre>
 <p>1.3 <strong>Step 3</strong>: Insert the following 20 sample documents into the <code>Movies</code> collection:</p>
 <pre><code class="language-json">[
@@ -1562,6 +1564,28 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here to insert the documents
+db.Movies.insertMany([
+    { "_id": 1, "title": "Inception", "director": "Christopher Nolan", "genre": "Sci-Fi", "year": 2010, "rating": 8.8 },
+    { "_id": 2, "title": "The Matrix", "director": "The Wachowskis", "genre": "Sci-Fi", "year": 1999, "rating": 8.7 },
+    { "_id": 3, "title": "Titanic", "director": "James Cameron", "genre": "Romance", "year": 1997, "rating": 7.8 },
+    { "_id": 4, "title": "The Godfather", "director": "Francis Ford Coppola", "genre": "Crime", "year": 1972, "rating": 9.2 },
+    { "_id": 5, "title": "The Dark Knight", "director": "Christopher Nolan", "genre": "Action", "year": 2008, "rating": 9.0 },
+    { "_id": 6, "title": "Forrest Gump", "director": "Robert Zemeckis", "genre": "Drama", "year": 1994, "rating": 8.8 },
+    { "_id": 7, "title": "Pulp Fiction", "director": "Quentin Tarantino", "genre": "Crime", "year": 1994, "rating": 8.9 },
+    { "_id": 8, "title": "Avengers: Endgame", "director": "Anthony Russo, Joe Russo", "genre": "Action", "year": 2019, "rating": 8.4 },
+    { "_id": 9, "title": "Jurassic Park", "director": "Steven Spielberg", "genre": "Adventure", "year": 1993, "rating": 8.1 },
+    { "_id": 10, "title": "The Shawshank Redemption", "director": "Frank Darabont", "genre": "Drama", "year": 1994, "rating": 9.3 },
+    { "_id": 11, "title": "Star Wars: A New Hope", "director": "George Lucas", "genre": "Sci-Fi", "year": 1977, "rating": 8.6 },
+    { "_id": 12, "title": "Interstellar", "director": "Christopher Nolan", "genre": "Sci-Fi", "year": 2014, "rating": 8.6 },
+    { "_id": 13, "title": "Gladiator", "director": "Ridley Scott", "genre": "Action", "year": 2000, "rating": 8.5 },
+    { "_id": 14, "title": "The Lion King", "director": "Roger Allers, Rob Minkoff", "genre": "Animation", "year": 1994, "rating": 8.5 },
+    { "_id": 15, "title": "Schindler's List", "director": "Steven Spielberg", "genre": "Drama", "year": 1993, "rating": 9.0 },
+    { "_id": 16, "title": "Braveheart", "director": "Mel Gibson", "genre": "Drama", "year": 1995, "rating": 8.3 },
+    { "_id": 17, "title": "The Avengers", "director": "Joss Whedon", "genre": "Action", "year": 2012, "rating": 8.0 },
+    { "_id": 18, "title": "Frozen", "director": "Chris Buck, Jennifer Lee", "genre": "Animation", "year": 2013, "rating": 7.4 },
+    { "_id": 19, "title": "The Lord of the Rings: The Fellowship of the Ring", "director": "Peter Jackson", "genre": "Fantasy", "year": 2001, "rating": 8.8 },
+    { "_id": 20, "title": "The Social Network", "director": "David Fincher", "genre": "Drama", "year": 2010, "rating": 7.7 }
+]);
 </code></pre>
 <hr />
 <h3><strong>Task 2: Query the Data</strong></h3>
@@ -1580,6 +1604,7 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+    db.Movies.find({rating:{$gt: 8.5}},{title:1,rating:1})
 </code></pre>
 <p>2.2 <strong>Query 2</strong>: Retrieve all movies directed by &quot;Christopher Nolan.&quot;</p>
 <p><strong>Expected Result</strong>:</p>
@@ -1591,6 +1616,7 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+    db.Movies.find({director:"Christopher Nolan"},{title:1,director:1})
 </code></pre>
 <hr />
 <h3><strong>Task 3: Update the Data</strong></h3>
@@ -1604,6 +1630,7 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+    db.Movies.updateOne({ title: "The Social Network" }, { $set: { genre: "Biography"} })
 </code></pre>
 <p>3.2 <strong>Update 2</strong>: Increase the <code>rating</code> of all movies released before 2000 by 0.2 points.</p>
 <p><strong>Expected Result</strong>:</p>
@@ -1615,6 +1642,10 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+db.Movies.updateMany(
+  { year: { $lt: 2000 } },   
+  { $inc: { rating: 0.2 } }
+);
 </code></pre>
 <hr />
 <h3><strong>Task 4: Delete Data</strong></h3>
@@ -1627,12 +1658,14 @@ You are managing a database for a movie rental system. You will first create a d
 </code></pre>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+    db.Movies.deleteMany({rating:{$lt:8.0}});
 </code></pre>
 <hr />
 <h3><strong>Task 5: Drop the Database</strong></h3>
 <p>5.1 <strong>Drop the Database</strong>: Delete the entire <code>MovieRental</code> database.</p>
 <p><strong>Your Query</strong>:</p>
 <pre><code class="language-javascript">// Write the query here
+    db.dropDatabase(); 
 </code></pre>
 <hr />
 <h3><strong>Instructions for Students</strong></h3>

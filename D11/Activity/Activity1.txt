@@ -2,18 +2,19 @@
 
 // Step 2: In MongoDB Compass, create a new database called "Bookstore" and a collection called "Books".
 use Bookstore
-db.Books.insertOne({
-	title:"Vinland Saga",
-	author:"Makoto Yukimura",
-	genre: "Seinen manga",
-    publicationYear: "2005"
-})
+db.createCollection("Books")
 
 // Step 3: Perform the following CRUD operations using MongoDB Compass:
 
 // a) Create Operation:
 // Insert at least three book documents with different fields such as title, author, genre, and publication year.
 db.Books.insertMany([
+    {
+        title:"Vinland Saga",
+        author:"Makoto Yukimura",
+        genre: "Seinen manga",
+        publicationYear: "2005"
+    },
     {
         title:"One Piece",
         author:"Eiichiro Oda",
@@ -25,7 +26,7 @@ db.Books.insertMany([
         author:"Yusei Matsui",
         genre: "Shonen manga",
         publicationYear: "2012"
-    },
+    }
 ])
 db.Books.find()
 
@@ -55,3 +56,4 @@ db.Books.find()
 
 // Note: Remember to clean up the cluster and delete the "Bookstore" database if no longer needed.
 db.Books.drop();
+db.dropDatabase(); 
