@@ -1,0 +1,38 @@
+1.Retrieve all courses in the "Programming" category.
+Query:
+
+db.courses.aggregate([{
+    $lookup: {
+      from: "categories", 
+      localField: "categories", 
+      foreignField: "_id", 
+      as: "categories" 
+    }
+  },
+  {
+    $match: {
+      "categories.name": "Programming" 
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      title: 1,
+      description: 1,
+      "categories.name": 1 
+    }
+  }
+]);
+
+// Result
+
+{
+  _id: ObjectId('673de552a54ecad764a9c42e'),
+  title: 'Introduction to MongoDB',
+  description: 'Learn the basics of MongoDB.',
+  categories: [
+    {
+      name: 'Programming'
+    }
+  ]
+}

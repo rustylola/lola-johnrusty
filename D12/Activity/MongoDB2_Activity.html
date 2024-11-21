@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity: Data Modeling Challenge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4"><strong>Activity: Data Modeling Challenge with MongoDB Atlas</strong></h1>
+
+        <h3><strong>Objective</strong></h3>
+        <p>Design a database schema for an online learning platform using <strong>MongoDB Atlas</strong>, populate collections with data, write and execute queries to retrieve information, and submit your work by exporting the database and pushing the results to GitHub.</p>
+
+        <h3><strong>Scenario: Online Learning Platform</strong></h3>
+        <h4><strong>Scenario Details</strong></h4>
+        <p>The platform requires the following:</p>
+        <ul>
+            <li><strong>Courses</strong>:
+                <ul>
+                    <li>Each course has a title, description, and a list of enrolled students.</li>
+                    <li>Courses are organized into categories: <strong>Programming</strong>, <strong>Data Science</strong>, and <strong>Design</strong>.</li>
+                </ul>
+            </li>
+            <li><strong>Students</strong>:
+                <ul>
+                    <li>Students have a name, email, and the list of courses they are enrolled in.</li>
+                    <li>Students can leave reviews for courses.</li>
+                </ul>
+            </li>
+            <li><strong>Instructors</strong>:
+                <ul>
+                    <li>Each course is taught by one instructor.</li>
+                    <li>Instructors have a name, email, and the list of courses they teach.</li>
+                </ul>
+            </li>
+            <li><strong>Reviews</strong>:
+                <ul>
+                    <li>Students can rate courses (1 to 5 stars) and leave comments.</li>
+                    <li>Reviews are tied to a specific course and a specific student.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3><strong>Instructions</strong></h3>
+
+        <h4><strong>Step 1: Prepare Your MongoDB Database</strong></h4>
+        <ol>
+            <li>Open <strong>MongoDB Atlas</strong> and navigate to your existing cluster.</li>
+            <li>Access the <strong>Collections</strong> tab.</li>
+            <li>Create a new database named <code>online_learning</code>.</li>
+        </ol>
+
+        <h4><strong>Step 2: Populate the Database</strong></h4>
+        <h5><strong>Categories Collection</strong></h5>
+        <ul>
+            <li><strong>Collection Name</strong>: <code>categories</code></li>
+            <li><strong>Insert the Following Documents</strong>:
+                <pre><code>[
+  { "name": "Programming" },
+  { "name": "Data Science" },
+  { "name": "Design" }
+]</code></pre>
+            </li>
+        </ul>
+
+        <h5><strong>Instructors Collection</strong></h5>
+        <ul>
+            <li><strong>Collection Name</strong>: <code>instructors</code></li>
+            <li><strong>Insert the Following Documents</strong>:
+                <pre><code>[
+  {
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "teachingCourses": []
+  },
+  {
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "teachingCourses": []
+  }
+]</code></pre>
+            </li>
+        </ul>
+
+        <h5><strong>Students Collection</strong></h5>
+        <ul>
+            <li><strong>Collection Name</strong>: <code>students</code></li>
+            <li><strong>Insert the Following Documents</strong>:
+                <pre><code>[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.j@example.com",
+    "enrolledCourses": []
+  },
+  {
+    "name": "Bob Brown",
+    "email": "bob.b@example.com",
+    "enrolledCourses": []
+  },
+  {
+    "name": "Charlie White",
+    "email": "charlie.w@example.com",
+    "enrolledCourses": []
+  }
+]</code></pre>
+            </li>
+        </ul>
+
+        <h5><strong>Courses Collection</strong></h5>
+        <ul>
+            <li><strong>Collection Name</strong>: <code>courses</code></li>
+            <li><strong>Insert the Following Documents</strong>:
+                <pre><code>[
+  {
+    "title": "Introduction to MongoDB",
+    "description": "Learn the basics of MongoDB.",
+    "category": ObjectId("CATEGORY_ID_1"),
+    "instructor": ObjectId("INSTRUCTOR_ID_1"),
+    "students": [ ObjectId("STUDENT_ID_1"), ObjectId("STUDENT_ID_2") ],
+    "reviews": [
+      { "rating": 5, "comment": "Great course!", "student": ObjectId("STUDENT_ID_1") },
+      { "rating": 4, "comment": "Very informative.", "student": ObjectId("STUDENT_ID_2") }
+    ]
+  },
+  {
+    "title": "Data Science with Python",
+    "description": "A comprehensive guide to data science using Python.",
+    "category": ObjectId("CATEGORY_ID_2"),
+    "instructor": ObjectId("INSTRUCTOR_ID_2"),
+    "students": [ ObjectId("STUDENT_ID_3") ],
+    "reviews": [
+      { "rating": 4, "comment": "Good introduction.", "student": ObjectId("STUDENT_ID_3") }
+    ]
+  }
+]</code></pre>
+                <strong>Note</strong>: Replace <code>CATEGORY_ID_1</code>, <code>INSTRUCTOR_ID_1</code>, and other <code>ObjectId</code> placeholders with actual <code>_id</code> values from the respective collections.
+            </li>
+        </ul>
+
+        <h4><strong>Step 3: Write and Execute Queries</strong></h4>
+        <ol>
+            <li>Retrieve all courses in the "Programming" category.</li>
+            <li>Retrieve all students enrolled in the course "Introduction to MongoDB".</li>
+            <li>Retrieve course details, including category and instructor information, for all courses.</li>
+            <li>Retrieve all reviews for the course "Data Science with Python," including the details of the students who wrote them.</li>
+            <li>Find the average rating for each course.</li>
+            <li>Retrieve all courses taught by the instructor "Jane Doe".</li>
+            <li>Count the number of courses in each category.</li>
+            <li>Find all students who have reviewed the course "Introduction to MongoDB".</li>
+            <li>Retrieve the titles of all courses where the average rating is above 4.</li>
+            <li>Retrieve all students who are enrolled in courses taught by "John Smith".</li>
+        </ol>
+
+        <h4><strong>Step 4: Export the Database</strong></h4>
+        <ol>
+            <li>Open your <strong>MongoDB Atlas</strong> cluster and navigate to the <strong>Collections</strong> tab.</li>
+            <li>Click on the <strong>Export</strong> option for the <code>online_learning</code> database.</li>
+            <li>Export all collections as JSON files.</li>
+            <li>Ensure that your exported files include all populated collections: <code>categories</code>, <code>instructors</code>, <code>students</code>, and <code>courses</code>.</li>
+        </ol>
+
+        <h4><strong>Step 5: Submit Your Work</strong></h4>
+        <ol>
+            <li>Create a folder in your GitHub repository under the path: <code>Day11 > Activity ></code>.</li>
+            <li>Name the folder <code>online_learning_export</code>.</li>
+            <li>Include the following in the folder:
+                <ul>
+                    <li>All exported JSON files of your database.</li>
+                    <li>A text file named <code>activity.txt</code> containing the results of your 10 queries.</li>
+                </ul>
+            </li>
+            <li>Push the folder to your GitHub repository.</li>
+        </ol>
+
+        <h3><strong>Grading Criteria</strong></h3>
+        <ul>
+            <li><strong>Schema Design</strong>: Proper use of embedding and referencing (30%).</li>
+            <li><strong>Data Population</strong>: Accurate and complete sample data (30%).</li>
+            <li><strong>Query Execution</strong>: Correct results for all queries (30%).</li>
+            <li><strong>Export and Submission</strong>: Properly exported and submitted database with query results (10%).</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
