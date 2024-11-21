@@ -36,3 +36,29 @@ db.courses.aggregate([{
     }
   ]
 }
+
+
+2.Retrieve all students enrolled in the course "Introduction to MongoDB".
+Query:
+
+db.courses.aggregate([{
+    $lookup: {
+      from: "students", 
+      localField: "students", 
+      foreignField: "_id", 
+      as: "students" 
+    }
+  },
+  {
+    $match: {
+      "title": "Introduction to MongoDB" 
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      "students.email" : 1,
+      "students.name": 1 
+    }
+  }
+]);
