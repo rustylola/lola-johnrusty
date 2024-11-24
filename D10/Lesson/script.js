@@ -28,10 +28,14 @@ const circles = {
     location: {
         x: 1,
         y: 1
+    },
+    draw: function(){
+        console.log('draw');
     }
 };
+circles.draw();
 
-// Factory Function
+// Factory function
 function createdCircle(radius){
     return{
         radius,
@@ -46,6 +50,7 @@ console.log(circleFunc.constructor);
 /* Output: ƒ Object() { [native code] }*/
 
 // constructor function
+// a function start at first letter upper case
 function Circle(radius) {
     this.radius = radius;
     this.draw = function(){
@@ -54,6 +59,7 @@ function Circle(radius) {
 }
 
 const another = new Circle(1);
+// new operator (new vs non-new)
 console.log(Circle.constructor);
 /* Output:
 ƒ Circle(radius) {
