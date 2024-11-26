@@ -6,8 +6,14 @@ function Circle(radius){
     this.getDefaultLocation = function(){
         return defaultLocation;
     }
+
+      // private method
+    let computeOptimumLocation = function(factor){
+
+    }
+
     this.draw = function(){
-        this.computeOptimumLocation();
+        computeOptimumLocation();
         console.log('draw');
     }
 
