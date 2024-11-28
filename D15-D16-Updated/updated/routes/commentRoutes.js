@@ -6,6 +6,5 @@ const router = express.Router();
 
 router.post('/:blogId', authMiddleware, addComment);
 router.get('/:blogId', getCommentsByBlog);
-router.delete('/:id', authMiddleware, deleteComment);
 
 export default router;
