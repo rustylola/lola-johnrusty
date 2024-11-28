@@ -1,0 +1,57 @@
+npm create vite@latest react-deep-dive
+
+-> cd react-deep-dive
+    npm install
+    npm run dev
+    npm install react-bootstrap bootstrap
+    npm install react-router-dom
+    
+// Add extensions
+ -> Es7
+
+
+## Reach Hook ##
+// state
+useState - React Hook
+
+
+
+
+
+
+
+
+
+
+
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import Welcome from './components/Welcome'
+import Greeting from './components/Greeting'
+import DisplayName from './components/DisplayName'
+import Counter from './components/Counter'
+import ConditionalRender from './components/ConditionalRender'
+import AppNavbar from './components/AppNavbar'
+import { Button } from 'react-bootstrap'
+
+function App() {
+  return (
+    <div>
+      {/* <h1>Hello, World!</h1>
+      <Welcome />
+      <Greeting />
+      <DisplayName name="John Doe"/>
+      <DisplayName name="Jane Doe"/>
+      <Counter />
+      <ConditionalRender /> */}
+      <AppNavbar />
+      <h1>Welcome to my Reacy App</h1>
+      <button variant="primary">Click me</button>
+    </div>
+  )
+}
+
+export default App
