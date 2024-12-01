@@ -81,3 +81,22 @@ Array Method:
             //     console.log(this);
             // });
         // }
+
+
+#### NPM Command
+
+-> npm create vite@latest react-deep-dive
+
+-> cd react-deep-dive
+    npm install
+    npm run dev
+    npm install react-bootstrap bootstrap
+    npm install react-router-dom
+    
+// Add extensions
+ -> Es7
+
+
+## Reach Hook ##
+// state
+useState - React Hook
