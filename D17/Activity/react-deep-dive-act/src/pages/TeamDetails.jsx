@@ -1,11 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const TeamDetails = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+  const { id } = useParams();
+  
+  return <h2>Team ID: {id} </h2>
 }
 
 export default TeamDetails
