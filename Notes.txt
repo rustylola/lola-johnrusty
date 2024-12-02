@@ -90,7 +90,7 @@ Array Method:
 -> cd react-deep-dive
     npm install
     npm run dev
-    npm install react-bootstrap bootstrap
+    npm install react-icons react-bootstrap bootstrap
     npm install react-router-dom
     
 // Add extensions
