@@ -1,9 +1,11 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import "dotenv/config";
 import mongoose from 'mongoose';
-import userRoutes from "./routes/userRoutes.js"
-import authRoutes from "./routes/authRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -16,7 +18,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+}));
 
 // Test endpoint
 // app.get("/api/test", async (req, res) => {
