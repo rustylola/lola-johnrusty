@@ -92,6 +92,7 @@ Array Method:
     npm run dev
     npm install react-icons react-bootstrap bootstrap
     npm install react-router-dom
+    npm install jsonwebtoken byscriptjs express-validator
     
     ****** Tailwind Setup ******
     npm install -D tailwindcss postcss autoprefixer
@@ -132,9 +133,20 @@ Array Method:
             ],
         },
         };
+
+        -> index.css
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+
         ****** Tailwind Setup End ******
 
+    -> form
+    npm install react-hook-form
 
+    -> react query
+    npm install react-query
+    npm install @tanstack/react-query
 // Add extensions
  -> Es7
 
