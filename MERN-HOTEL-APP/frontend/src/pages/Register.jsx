@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form"; // Import `useForm` for form handling
 import { useMutation } from "react-query"; // Import `useMutation` for managing API requests
 import * as apiClient from "../api-client"; // Import API functions from `api-client`
+import { useAppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 // Data structure for the registration form
 export const RegisterFormData = {
@@ -13,6 +15,9 @@ export const RegisterFormData = {
 };
 
 const Register = () => {
+  const navigate = useNavigate(); // for redirect
+  const { showToast } = useAppContext(); 
+  
   const {
     register, // Registers input fields with validation rules
     watch, // Watches input field values (useful for dynamic validation)
@@ -23,10 +28,11 @@ const Register = () => {
   // Define a mutation to handle the registration API call
   const mutation = useMutation(apiClient.register, {
     onSuccess: () => {
-      console.log("Registration successful!");
+      showToast({ message: "Registration successful", type: "SUCCESS" }); // Success toast
+      navigate("/"); // Redirect to home page
     },
     onError: (error) => {
-      console.error(error.message); // Log errors to the console
+      showToast({ message: error.message, type: "ERROR" }); // Error toast
     },
   });
 
