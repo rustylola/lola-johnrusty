@@ -8,11 +8,12 @@ import myHotelRoutes from './routes/myHotelRoutes.js'
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from 'cloudinary'
 
-// cloudinary.config({
-//   cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
-//   api_key:process.envCLOUDINARY_API_KEY,
-//   api_secret:process.envCLOUDINARY_API_SECRET,
-// })
+// Connect to cloudinary
+cloudinary.config({
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:process.env.CLOUDINARY_API_KEY,
+  api_secret:process.env.CLOUDINARY_API_SECRET,
+})
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -36,7 +37,6 @@ app.use(cors({
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use("/api/my-hotels", myHotelRoutes);
-
 
 app.listen(3000, () => {
   console.log("server running on localhost 3000")
