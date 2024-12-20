@@ -17,8 +17,12 @@ const Wrapper = styled.section`
   }
   h1 {
     font-weight: 700;
+    font-size: 76px;
     span {
-      color: var(--primary-500);
+      padding: 1rem;
+      border-radius: 20px;
+      background-color: var(--primary-50);
+      color: var(--primary-900);
     }
     margin-bottom: 1.5rem;
   }
