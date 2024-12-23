@@ -5,6 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import Logo from './Logo';
 import Links from '../utils/Links';
 import { NavLink } from 'react-router-dom';
+import NavLinks from './NavLinks';
 
 const SidebarMobile = () => {
   const {showSidebar, toggleSidebar} = useDashboardContext();
@@ -20,15 +21,7 @@ const SidebarMobile = () => {
           <header>
             <Logo/>
           </header>
-          <div className="nav-links">
-            {Links.map((link) => {
-              const {text, path, icon} = link;
-              return <NavLink to={path} key={text} className='nav-link' onClick={toggleSidebar} end>
-                <span className="icon">{icon}</span>
-                {text}
-              </NavLink>
-            })}
-          </div>
+          <NavLinks />
         </div>
       </div>
     </Wrapper>

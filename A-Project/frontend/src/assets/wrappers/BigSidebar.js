@@ -34,7 +34,7 @@ const Wrapper = styled.aside`
     .nav-link {
       display: flex;
       align-items: center;
-      color: var(--text-secondary-color);
+      color: var(--navy-900);
       padding: 1rem 0;
       padding-left: 2.5rem;
       text-transform: capitalize;
@@ -42,7 +42,7 @@ const Wrapper = styled.aside`
     }
     .nav-link:hover {
       padding-left: 3rem;
-      color: var(--primary-500);
+      color: var(--navy-600);
       transition: var(--transition);
     }
     .icon {
@@ -52,7 +52,7 @@ const Wrapper = styled.aside`
       place-items: center;
     }
     .active {
-      color: var(--primary-500);
+      color: var(--navy-600);
     }
     .pending {
       background: var(--background-color);

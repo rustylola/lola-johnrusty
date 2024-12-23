@@ -1,10 +1,20 @@
 import React from 'react'
 import Wrapper from '../assets/wrappers/BigSidebar'
+import NavLinks from './NavLinks'
+import Logo from './Logo'
+import { useDashboardContext } from '../pages/DashboardLayout'
 
 const Sidebar = () => {
+  const {showSidebar} = useDashboardContext();
+
   return (
     <Wrapper>
-      Web Sidebar
+      <div className={showSidebar ? 'sidebar-container' : 'sidebar-container show-sidebar' }>
+        <div className="content">
+          <header><Logo /></header>
+          <NavLinks isSidebar/>
+        </div>
+      </div>
     </Wrapper>
   )
 }

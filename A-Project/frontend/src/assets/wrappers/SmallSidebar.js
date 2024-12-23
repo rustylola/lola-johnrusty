@@ -39,7 +39,7 @@ const Wrapper = styled.aside`
     background: transparent;
     border-color: transparent;
     font-size: 2rem;
-    color: var(--red-dark);
+    color: var(--navy-900);
     cursor: pointer;
   }
   .nav-links {
@@ -50,13 +50,13 @@ const Wrapper = styled.aside`
   .nav-link {
     display: flex;
     align-items: center;
-    color: var(--text-secondary-color);
+    color: var(--navy-900);
     padding: 1rem 0;
     text-transform: capitalize;
     transition: var(--transition);
   }
   .nav-link:hover {
-    color: var(--primary-500);
+    color: var(--navy-600);
   }
   .icon {
     font-size: 1.5rem;
@@ -65,7 +65,7 @@ const Wrapper = styled.aside`
     place-items: center;
   }
   .active {
-    color: var(--primary-500);
+    color: var(--navy-600);
   }
 `;
 export default Wrapper;
