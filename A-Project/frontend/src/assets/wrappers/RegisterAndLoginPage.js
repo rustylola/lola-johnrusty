@@ -4,6 +4,10 @@ const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;
   align-items: center;
+  background:    url(./src/assets/images/background-ball.png);
+  background-size: contain;                      
+  background-repeat:   no-repeat;
+  background-position: center center;
   .logo {
     display: block;
     margin: 0 auto;
@@ -11,7 +15,7 @@ const Wrapper = styled.section`
   }
   .form {
     max-width: 400px;
-    border-top: 5px solid var(--primary-500);
+    border-top: 5px solid var(--navy-900);
   }
   h4 {
     text-align: center;

@@ -23,17 +23,6 @@ html {
   --primary-800: #0a6c74;
   --primary-900: #044e54;
 
-  --primary-50: #220055;
-  --primary-100: #2f0a66;
-  --primary-200: #513083;
-  --primary-300: #705697;
-  --primary-400: #746092;
-  --primary-500: #988ea8;
-  --primary-600: #aca2bb;
-  --primary-700: #aac1c4;
-  --primary-800: #d2dedf;
-  --primary-900: #ffffff;
-
   /* grey */
   --grey-50: #f8fafc;
   --grey-100: #f1f5f9;
@@ -52,6 +41,22 @@ html {
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
+
+  /* New Text Color */
+  --navy-text: #220055;
+  --navy-900: #310c68;
+  --navy-800: #4b1f8d;
+  --navy-700: #653aa7;
+  --navy-600: #8457c7;
+  --navy-500: #a37bdf;
+  --navy-400: #bf9af7;
+  --navy-300: #d2b4ff;
+  --navy-200: #e8d9ff;
+  --navy-100: #f3ecfd;
+  --navy-50: #fff;
+
+  /* New Background Color */
+  --navy-bg: #220055;
 
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
@@ -82,7 +87,7 @@ html {
   --background-color: var(--grey-50);
   --text-color: var(--grey-900);
   --background-secondary-color: var(--white);
-  --text-secondary-color: var(--grey-500);
+  --text-secondary-color: var(--grey-600);
 }
 
 .dark-theme {
@@ -185,7 +190,7 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
+  background: var(--navy-bg);
   border: transparent;
   border-radius: var(--border-radius);
   letter-spacing: var(--letter-spacing);

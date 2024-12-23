@@ -14,21 +14,22 @@ const Wrapper = styled.section`
     display: grid;
     align-items: center;
     margin-top: -3rem;
+    background:    url(./src/assets/images/background-ball.png);
+    background-size: contain;                      
+    background-repeat:   no-repeat;
+    background-position: right;
   }
   h1 {
     font-weight: 700;
-    font-size: 76px;
+    text-shadow: 2px 2px 5px var(--grey-500);
     span {
-      padding: 1rem;
-      border-radius: 20px;
-      background-color: var(--primary-50);
-      color: var(--primary-900);
+      color: var(--navy-text);
     }
     margin-bottom: 1.5rem;
   }
   p {
     line-height: 2;
-    color: var(--text-secondary-color);
+    color: var(--navy-900);
     margin-bottom: 1.5rem;
     max-width: 35em;
   }
@@ -40,6 +41,7 @@ const Wrapper = styled.section`
   }
   .btn {
     padding: 0.75rem 1rem;
+    box-shadow: 2px 2px 5px var(--grey-500);
   }
   @media (min-width: 992px) {
     .page {
