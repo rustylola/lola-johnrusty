@@ -93,6 +93,7 @@ Array Method:
     npm install react-icons react-bootstrap bootstrap
     npm install react-router-dom
     npm install jsonwebtoken byscriptjs express-validator
+    npm install react-responsive-masonry --save
     
     ****** Tailwind Setup ******
     npm install -D tailwindcss postcss autoprefixer
@@ -150,7 +151,10 @@ Array Method:
 // Add extensions
  -> Es7
 
-
+# Backend
+npm install bcryptjs dotenv express jsonwebtoken 
+npm install mongoose cors nodemailer stripe body-parser
+npm install --save-dev nodemon
 ## Reach Hook ##
 // state
 useState - React Hook
