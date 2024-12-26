@@ -2,12 +2,11 @@ import 'express-async-errors';
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import { body, validationResult } from 'express-validator';
 import "dotenv/config";
 
 // Routers
 import jobRouter from './routes/jobRouter.js';
-
+import authRouter from './routes/authRouter.js';
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 
@@ -20,29 +19,14 @@ if(process.env.NODE_ENV === 'DEVELOPMENT'){
 
 app.use(express.json());
 
-app.post('/api/test', 
-    // Using Express validator
-    [body('name')
-        .notEmpty().withMessage('Name is required.')
-        .isLength({min:50}).withMessage('Name must be at least 50 Characters.')], (req, res, next) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            const errorMessages = errors.array().map((error) => error.msg);
-            return res.status(400).json({errors: errorMessages});
-        }
-        next();
-    },
-    (req,res) => {
-    const {name} = req.body;
-    res.json({message: `hello ${name}`});
-});
-
 app.get('/', (req,res) => {
     res.send('Hello world');
 });
 
 // JOBS API
 app.use('/api/jobs',jobRouter);
+// AUTH API
+app.use('/api/auth', authRouter);
 
 // Resource not found middleware
 app.use('*', (req,res) =>{
@@ -60,7 +44,6 @@ try {
     .catch((err) => console.error("MongoDB connection error:", err));
     mongoose.connect(process.env.MONGO_URI)
     
-
     app.listen(port, () => {
         console.log(`Server running on Port:${port} ...`);
     });
