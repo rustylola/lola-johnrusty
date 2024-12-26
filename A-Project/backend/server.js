@@ -1,13 +1,18 @@
+import 'express-async-errors';
 import express from 'express';
 import morgan from 'morgan';
-import { nanoid } from 'nanoid';
+import mongoose from 'mongoose';
+import { body, validationResult } from 'express-validator';
 import "dotenv/config";
-const app = express();
 
-let jobs = [
-    {id:nanoid(), company:'apple', position:'front-end'},
-    {id:nanoid(), company:'google', position:'back-end'},
-]
+// Routers
+import jobRouter from './routes/jobRouter.js';
+
+// Middleware
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+
+// Init Express
+const app = express();
 
 if(process.env.NODE_ENV === 'DEVELOPMENT'){
     app.use(morgan("dev"));
@@ -15,72 +20,29 @@ if(process.env.NODE_ENV === 'DEVELOPMENT'){
 
 app.use(express.json());
 
-app.post('/', (req,res) => {
-    console.log(req);
-    res.json({message: 'data received ', data: req.body});
+app.post('/api/test', 
+    // Using Express validator
+    [body('name')
+        .notEmpty().withMessage('Name is required.')
+        .isLength({min:50}).withMessage('Name must be at least 50 Characters.')], (req, res, next) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const errorMessages = errors.array().map((error) => error.msg);
+            return res.status(400).json({errors: errorMessages});
+        }
+        next();
+    },
+    (req,res) => {
+    const {name} = req.body;
+    res.json({message: `hello ${name}`});
 });
 
 app.get('/', (req,res) => {
     res.send('Hello world');
 });
 
-// GET ALL JOBS
-app.get('/api/jobs', (req,res) => {
-    res.status(200).json({jobs});
-});
-
-// CREATE JOB
-app.post('/api/jobs', (req,res) => {
-    const {company, position} = req.body;
-    console.log(req);
-    if(!company || !position) {
-        return res.status(400).json({message:"Bad Request, please check your data..."});
-    }
-    const id = nanoid(10);
-    const job = {id, company, position};
-    jobs.push(job);
-    res.status(201).json({job});
-});
-
-// GET SINGLE JOB
-app.get('/api/jobs/:id', (req, res) => {
-    const {id} = req.params;
-    const job = jobs.find((job) => job.id === id);
-    if(!job) {
-        return res.status(404).json({message: 'Job Not exist'})
-    }
-    res.status(201).json({job});
-});
-
-// EDIT JOB
-app.patch('/api/jobs/:id', (req, res) => {
-    const {company, position} = req.body;
-    console.log(req);
-    if(!company || !position) {
-        return res.status(400).json({message:"Bad Request, please check your data..."});
-    }
-    const {id} = req.params;
-    const job = jobs.find((job) => job.id === id);
-    if(!job) {
-        return res.status(404).json({message: 'Job Not exist'})
-    }
-    job.company = company;
-    job.position = position;
-
-    res.status(201).json({message: "Job Modified successful.",job});
-});
-
-// DELETE JOB
-app.delete('/api/jobs/:id', (req, res) => {
-    const {id} = req.params;
-    const job = jobs.find((job) => job.id === id);
-    if(!job) {
-        return res.status(404).json({message: 'Job Not exist'})
-    }
-    const newJobs = jobs.filter((job) => job.id !== id );
-    jobs = newJobs;
-    res.status(201).json({message: "Job Delete.",jobs});
-});
+// JOBS API
+app.use('/api/jobs',jobRouter);
 
 // Resource not found middleware
 app.use('*', (req,res) =>{
@@ -88,13 +50,21 @@ app.use('*', (req,res) =>{
 });
 
 // Error Middleware
-app.use((err,req,res, next) =>{
-    console.log(err)
-    res.status(500).json({message: "Something went wrong."});
-});
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 510
+// Connect to MongoDB
+try {
+    await mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.error("MongoDB connection error:", err));
+    mongoose.connect(process.env.MONGO_URI)
+    
 
-app.listen(port, () => {
-    console.log(`SERVER RUNNING ON PORT ${port} ...`);
-})
+    app.listen(port, () => {
+        console.log(`Server running on Port:${port} ...`);
+    });
+} catch (error) {
+    console.log(error);
+    process.exit(1);
+}
