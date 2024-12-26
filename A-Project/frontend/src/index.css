@@ -204,7 +204,7 @@ ul {
   display: inline-block;
 }
 .btn:hover {
-  background: var(--primary-700);
+  background: var(--navy-700);
   box-shadow: var(--shadow-3);
 }
 .btn-hipster {

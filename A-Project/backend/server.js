@@ -28,6 +28,10 @@ app.get('/', (req,res) => {
     res.send('Hello world');
 });
 
+app.get('/api/test', ( req, res ) => {
+    res.json({message: 'test route'});
+});
+
 // JOBS API
 app.use('/api/jobs', authenticateUser, jobRouter);
 // USER API
