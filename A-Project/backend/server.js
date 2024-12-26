@@ -2,13 +2,16 @@ import 'express-async-errors';
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 import "dotenv/config";
 
 // Routers
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
+
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
 
 // Init Express
 const app = express();
@@ -17,6 +20,7 @@ if(process.env.NODE_ENV === 'DEVELOPMENT'){
     app.use(morgan("dev"));
 }
 
+app.use(cookieParser());
 app.use(express.json());
 
 app.get('/', (req,res) => {
@@ -24,7 +28,7 @@ app.get('/', (req,res) => {
 });
 
 // JOBS API
-app.use('/api/jobs',jobRouter);
+app.use('/api/jobs', authenticateUser, jobRouter);
 // AUTH API
 app.use('/api/auth', authRouter);
 

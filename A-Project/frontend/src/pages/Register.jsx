@@ -9,8 +9,8 @@ const Register = () => {
       <form className="form">
         <Logo />
         <h4>Register Account</h4>
-        <FormRow type='text' name='firstname' labelText='First Name' defaultValue='' />
-        <FormRow type='text' name='lastname' labelText='Last Name' defaultValue='' />
+        <FormRow type='text' name='firstName' labelText='First Name' defaultValue='' />
+        <FormRow type='text' name='lastnName' labelText='Last Name' defaultValue='' />
         <FormRow type='text' name='location' labelText='Location' defaultValue='Caloocan City' />
         <FormRow type='email' name='email' labelText='Email' defaultValue='' />
         <FormRow type='password' name='password' labelText='Password' defaultValue='test123' />
