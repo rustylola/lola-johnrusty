@@ -9,7 +9,7 @@ import NavLinks from './NavLinks';
 
 const SidebarMobile = () => {
   const {showSidebar, toggleSidebar} = useDashboardContext();
-  console.log(Links);
+  // console.log(Links);
 
   return (
     <Wrapper>

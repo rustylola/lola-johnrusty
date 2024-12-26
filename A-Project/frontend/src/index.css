@@ -108,6 +108,9 @@ body {
   font-weight: 400;
   line-height: 1;
 }
+.text-center{
+  text-align: center;
+}
 p {
   margin: 0;
 }
