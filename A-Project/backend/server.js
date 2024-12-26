@@ -8,6 +8,7 @@ import "dotenv/config";
 // Routers
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
+import userRouter from './routes/userRouter.js';
 
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -29,8 +30,11 @@ app.get('/', (req,res) => {
 
 // JOBS API
 app.use('/api/jobs', authenticateUser, jobRouter);
+// USER API
+app.use('/api/users', authenticateUser, userRouter);
 // AUTH API
 app.use('/api/auth', authRouter);
+
 
 // Resource not found middleware
 app.use('*', (req,res) =>{

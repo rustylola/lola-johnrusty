@@ -3,13 +3,23 @@ import Job from "../models/jobModel.js";
 import User from "../models/userModel.js";
 
 export const getCurrentUser = async (req, res) => {
-    res.staus(StatusCodes.OK).json({message:'Get user'});
-};
-
-export const getApplicationStats = async (req, res) => {
-    res.staus(StatusCodes.OK).json({message:'Get stats'});
+    const user = await User.findOne({ _id:req.user.userId });
+    const userWithoutPassword = user.toJSON();
+    res.status(StatusCodes.OK).json({user: userWithoutPassword});
 };
 
 export const updateUser = async (req, res) => {
-    res.staus(StatusCodes.OK).json({message:'Update user'});
+    const obj = {...req.body};
+    // remove password upon update
+    delete obj.password;
+    const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);
+    res.status(StatusCodes.OK).json({message:'User updated.'});
 };
+
+export const getApplicationStats = async (req, res) => {
+    const users = await User.countDocuments();
+    const jobs = await Job.countDocuments();
+
+    res.status(StatusCodes.OK).json({users, jobs});
+};
+
