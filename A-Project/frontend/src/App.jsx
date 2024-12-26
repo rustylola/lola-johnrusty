@@ -3,7 +3,7 @@ import {
   HomeLayout, Landing, Register, Login, DashboardLayout, Error,
   AddJob, Stats, AllJobs, Profile, Admin
 } from './pages/index';
-
+import { action as registerAction } from './pages/Register';
 
 // Dark Theme Checker
 export const checkDefaultTheme = () => {
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />,
+        action: registerAction,
       },
       {
         path: 'login',

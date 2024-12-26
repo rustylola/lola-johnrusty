@@ -4,8 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "setup-project": "npm i && cd .. && cd client && npm i",
-    "dev" : "nodemon server.js"
+    "setup-project": "npm i && cd .. && cd frontend && npm i",
+    "server" : "nodemon server",
+    "client" : "cd .. && cd frontend && npm run dev",
+    "dev" : "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "keywords": [],
   "author": "",

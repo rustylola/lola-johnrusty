@@ -74,6 +74,13 @@ export const validateRegisterInput = withValidationErrors([
         .isLength({ min:8 }).withMessage('Password must be at least 8 Characters.'),
     body('location')
         .notEmpty().withMessage('Location is required.'),
+    body('confirmpassword')
+        .notEmpty().withMessage('Confirm Password is required.')
+        .custom( async (confirmpassword, { req }) => {
+            if(confirmpassword !== req.body.password){
+                throw new BadRequestError('Confirm Password is not match.');
+            }
+        }),
 ]);
 
 export const validateLoginInput = withValidationErrors([
