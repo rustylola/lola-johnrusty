@@ -1,10 +1,29 @@
 import React from 'react'
+import Job from './Job'
+import Wrapper from '../assets/wrappers/JobsContainer.js';
+import { useAllJobsContext } from '../pages/AllJobs';
+
 
 const JobsContainer = () => {
+  const { data } = useAllJobsContext();
+  const { jobs } = data;
+  if(jobs.length === 0){
+    return (
+      <Wrapper>
+        <h2>No Jobs to display...</h2>
+      </Wrapper>
+    );
+  }
   return (
-    <div>
-      <h2>Jobs Container</h2>
-    </div>
+    <Wrapper>
+      <div className="jobs">
+        {
+          jobs.map((job) => {
+            return <Job key={job._id} {...job} />
+          })
+        }
+      </div>
+    </Wrapper>
   )
 }
 

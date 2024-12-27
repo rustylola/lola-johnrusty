@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   HomeLayout, Landing, Register, Login, DashboardLayout, Error,
-  AddJob, Stats, AllJobs, Profile, Admin
+  AddJob, Stats, AllJobs, Profile, Admin, EditJob
 } from './pages/index';
 
 // Action
@@ -9,7 +9,10 @@ import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { action as addJobAction } from './pages/AddJob';
 import { loader as dashboardLoader} from './pages/DashboardLayout';
-
+import { loader as allJobsLoader} from './pages/AllJobs';
+import { action as editJobAction } from './pages/EditJob';
+import { loader as editJobLoader } from './pages/EditJob';
+import { action as deleteJobAction } from './pages/DeleteJob';
 
 // Dark Theme Checker
 export const checkDefaultTheme = () => {
@@ -55,7 +58,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'alljobs',
-            element: <AllJobs />
+            element: <AllJobs />,
+            loader: allJobsLoader,
           },
           {
             path: 'profile',
@@ -64,6 +68,16 @@ const router = createBrowserRouter([
           {
             path: 'admin',
             element: <Admin />
+          },
+          {
+            path: 'edit-job/:id',
+            element: <EditJob />,
+            action: editJobAction,
+            loader: editJobLoader,
+          },
+          {
+            path: 'delete-job/:id',
+            action: deleteJobAction,
           }
         ]
       },
