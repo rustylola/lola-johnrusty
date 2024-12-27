@@ -10,12 +10,18 @@ const Wrapper = styled.section`
     margin: 0 auto;
     padding: 2rem 0;
   }
+  .dashboard-page > section{
+    box-shadow: var(--shadow-2);
+  }
   @media (min-width: 992px) {
     .dashboard {
       grid-template-columns: auto 1fr;
     }
     .dashboard-page {
       width: 90%;
+    }
+    .dashboard-page > section{
+      box-shadow: var(--shadow-2);
     }
   }
 `;

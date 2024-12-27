@@ -7,7 +7,9 @@ import {
 // Action
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
+import { action as addJobAction } from './pages/AddJob';
 import { loader as dashboardLoader} from './pages/DashboardLayout';
+
 
 // Dark Theme Checker
 export const checkDefaultTheme = () => {
@@ -48,7 +50,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'addjob',
-            element: <AddJob />
+            element: <AddJob />,
+            action: addJobAction
           },
           {
             path: 'alljobs',
