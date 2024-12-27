@@ -10,7 +10,7 @@ const Wrapper = styled.section`
     margin: 0 auto;
     padding: 2rem 0;
   }
-  .dashboard-page > section:first-child{
+  .dashboard-page > .add-job-section{
     box-shadow: var(--shadow-2);
   }
   @media (min-width: 992px) {
@@ -20,7 +20,7 @@ const Wrapper = styled.section`
     .dashboard-page {
       width: 90%;
     }
-    .dashboard-page > section:first-child{
+    .dashboard-page > .add-job-section{
       box-shadow: var(--shadow-2);
     }
   }
