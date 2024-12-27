@@ -25,7 +25,7 @@ const AddJob = () => {
   const { user } = useOutletContext();
 
   return (
-    <Wrapper className='add-job-section'>
+    <Wrapper className='shadow-med'>
       <Form method='post' className="form">
         <h4 className='form-title'>Add Job</h4>
         <div className="form-center">

@@ -29,7 +29,7 @@ const Profile = () => {
   const isSubmitting = navigation.state === 'submitting';
 
   return (
-    <Wrapper className='add-job-section'>
+    <Wrapper className='shadow-med'>
       <Form method="post" className='form' encType='multipart/form-data'>
         <h4 className="form-title">Profile</h4>
         <div className="form-center">
