@@ -17,7 +17,7 @@ const JobSchema = new mongoose.Schema(
       },
       jobLocation: {
         type: String,
-        default: 'my city',
+        default: 'Demo City',
       },
       createdBy:{
         type: mongoose.Types.ObjectId,
