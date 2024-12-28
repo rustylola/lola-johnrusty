@@ -30,12 +30,12 @@ const Register = () => {
       <Form method='post' className="form">
         <Logo />
         <h4>Register Account</h4>
-        <FormRow type='text' name='firstName' labelText='First Name' defaultValue='john' />
-        <FormRow type='text' name='lastName' labelText='Last Name' defaultValue='doe' />
-        <FormRow type='text' name='location' labelText='Location' defaultValue='Caloocan City' />
-        <FormRow type='email' name='email' labelText='Email' defaultValue='john@gmail.com' />
-        <FormRow type='password' name='password' labelText='Password' defaultValue='secret123' />
-        <FormRow type='password' name='confirmpassword' labelText='Confirm Password' defaultValue='secret123' />
+        <FormRow type='text' name='firstName' labelText='First Name' defaultValue='' />
+        <FormRow type='text' name='lastName' labelText='Last Name' defaultValue='' />
+        <FormRow type='text' name='location' labelText='Location' defaultValue='' />
+        <FormRow type='email' name='email' labelText='Email' defaultValue='' />
+        <FormRow type='password' name='password' labelText='Password' defaultValue='' />
+        <FormRow type='password' name='confirmpassword' labelText='Confirm Password' defaultValue='' />
         <button type="submit" className='btn btn-block' disabled={isSubmitting} >
           {isSubmitting ? 'Creating...' : 'Create'}
         </button>

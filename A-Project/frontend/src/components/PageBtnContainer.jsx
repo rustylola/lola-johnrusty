@@ -17,6 +17,44 @@ const PageBtnContainer = () => {
     navigate(`${pathname}?${searchParams.toString()}`);
     console.log(pageNumber);
   }
+
+  const addPageButtons = ({pageNumber, activeClass}) =>{
+    return (
+        <button className={`btn page-btn ${activeClass && 'active'}`} 
+                key={pageNumber} onClick={()=> handlePageChange(pageNumber)}>
+            {pageNumber}
+        </button>
+        )
+  }
+
+  const renderPageButtons = () =>{
+    const pageButtons = [];
+    pageButtons.push(addPageButtons({pageNumber:1, activeClass:currentPage === 1}));
+    // Dots
+    if(currentPage > 3){
+        pageButtons.push(<span className='page-btn dots shadow-small' key='dots'>...</span>)
+    }
+    // First Page
+    if(currentPage !== 1 && currentPage !== 2){
+        pageButtons.push(addPageButtons({pageNumber:currentPage-1, activeClass: false }));
+    }
+    // Current page
+    if(currentPage !== 1 && currentPage !== numberOfPages){
+        pageButtons.push(addPageButtons({pageNumber:currentPage, activeClass: true }));
+    }
+    // One after current page
+    if(currentPage !== numberOfPages && currentPage !== numberOfPages-1){
+        pageButtons.push(addPageButtons({pageNumber:currentPage + 1, activeClass: false }));
+    }
+    // Dots
+    if(currentPage < numberOfPages - 2){
+        pageButtons.push(<span className='page-btn dots shadow-small' key='dots-1'>...</span>)
+    }
+    // Last Page
+    pageButtons.push(addPageButtons({pageNumber:numberOfPages, activeClass:currentPage === numberOfPages}));
+    return pageButtons;
+  }
+
   return (
     <Wrapper>
       <button className="btn prev-btn" onClick={() =>{
@@ -28,14 +66,7 @@ const PageBtnContainer = () => {
         Prev
       </button>
       <div className="btn-container">
-        {pages.map((pageNumber)=>{
-            return (
-            <button className={`btn page-btn ${pageNumber === currentPage && 'active'}`} 
-                    key={pageNumber} onClick={()=> handlePageChange(pageNumber)}>
-                {pageNumber}
-            </button>
-            )
-        })}
+        {renderPageButtons()}
       </div>
       <button className="btn prev-btn" onClick={() =>{
         let nextPage = currentPage +1;

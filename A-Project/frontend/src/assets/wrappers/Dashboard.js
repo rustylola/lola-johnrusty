@@ -10,8 +10,11 @@ const Wrapper = styled.section`
     margin: 0 auto;
     padding: 2rem 0;
   }
-  .dashboard-page .shadow-med{
+  .shadow-med{
     box-shadow: var(--shadow-2);
+  }
+  .shadow-small{
+    box-shadow: var(--shadow-1);
   }
   @media (min-width: 992px) {
     .dashboard {
@@ -19,9 +22,6 @@ const Wrapper = styled.section`
     }
     .dashboard-page {
       width: 90%;
-    }
-    .dashboard-page .shadow-med{
-      box-shadow: var(--shadow-2);
     }
   }
 `;

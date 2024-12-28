@@ -51,8 +51,8 @@ const Login = () => {
         <Logo />
         <h4>Login Account</h4>
         {errors?.msg && <div className='alert alert-danger text-center' role='alert'><strong>{errors.msg}</strong></div> }
-        <FormRow type='email' name='email' labelText='Email' defaultValue='john@gmail.com' />
-        <FormRow type='password' name='password' labelText='Password' defaultValue='secret123' />
+        <FormRow type='email' name='email' labelText='Email' defaultValue='' />
+        <FormRow type='password' name='password' labelText='Password' defaultValue='' />
         <button type="submit" className='btn btn-block' disabled={isSubmitting}>
           {isSubmitting ? 'Logging in...' : 'Login'}
         </button>
